@@ -13,7 +13,7 @@
 	<?php
 	require "fungsi.php";
 	require "head.html";
-	$npp=$_GET['kode'];
+	$npp=decrypturl($_GET['npp']);
 	$sql="select * from dosen where npp='$npp'";
 	$qry=mysqli_query($koneksi,$sql);
 	$row=mysqli_fetch_assoc($qry);

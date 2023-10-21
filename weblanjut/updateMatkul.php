@@ -37,13 +37,13 @@ require "head.html";
 //--------- konfigurasi
 
 //jumlah data per halaman
-$jmlDataPerHal = 3;
+$jmlDataPerHal = 10;
 
 //cari jumlah data
 if (isset($_POST['cari'])){
 	$cari=$_POST['cari'];
 	$sql="select * from matkul where idmatkul like'%$cari%' or
-						  nama matkul like '%$cari%' or
+						  namamatkul like '%$cari%' or
 						  sks like '%$cari%'";
 }else{
 	$sql="select * from matkul";		
@@ -69,7 +69,7 @@ if (!$jmlData){
 if (isset($_POST['cari'])){
 	$cari=$_POST['cari'];
 	$sql="select * from matkul where idmatkul like'%$cari%' or
-						  nama matkul like '%$cari%' or
+						  namamatkul like '%$cari%' or
 						  sks like '%$cari%'
 						  limit $awalData,$jmlDataPerHal";
 }else{
@@ -88,7 +88,7 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
 	<span class="float-right">
 		<form action="" method="post" class="form-inline">
 			<button class="btn btn-success" type="submit">Cari</button>
-			<input class="form-control mr-2 ml-2" type="text" name="cari" placeholder="cari data mahasiswa..." autofocus autocomplete="off">
+			<input class="form-control mr-2 ml-2" type="text" name="cari" placeholder="cari data matkul..." autofocus autocomplete="off">
 		</form>
 	</span>
 	<br><br>
@@ -156,8 +156,8 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
 				<td><?php echo $row["jns"]?></td>
                 <td><?php echo $row["smt"]?></td>
 				<td>
-				<a class="btn btn-outline-primary btn-sm" href="editmatkul.php?kode=<?php echo $row['idmatkul']?>">Edit</a>
-				<a class="btn btn-outline-danger btn-sm" href="hpsmatkul.php?kode=<?php echo $row["idmatkul"]?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
+				<a class="btn btn-outline-primary btn-sm" href="editmatkul.php?kode=<?php echo encryptid($row["idmatkul"])?>">Edit</a>
+				<a class="btn btn-outline-danger btn-sm" href="hpsmatkul.php?kode=<?php echo encryptid($row["idmatkul"])?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
 				</td>
 			</tr>
 			<?php 

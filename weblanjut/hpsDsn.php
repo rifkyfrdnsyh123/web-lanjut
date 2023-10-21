@@ -2,13 +2,19 @@
     //memanggil file pustaka fungsi
     require "fungsi.php";
 
-    //memindahkan data kiriman dari form ke var biasa
-    $id=$_GET["kode"];
+    $npp = decrypturl($_GET["npp"]);
 
+    $q = "SELECT * FROM dosen WHERE npp = '".$npp."'";
 
-    $sql=$koneksi->query("select * from dosen where npp='$id'");
-    //membuat query hapus data
-    $sql="delete from dosen where npp=$id";
-    mysqli_query($koneksi,$sql);
-    header("location:updateDosen.php");
+    $rs = mysqli_query($koneksi, $q);
+    if(mysqli_num_rows($rs) == 1){
+        mysqli_query($koneksi, "DELETE FROM dosen WHERE npp = '$npp'");
+        header("location:updateDosen.php");
+    } else{
+        echo "<script>
+            alert('NPP tidak ditemukan')
+            javascript:history.go(-1)
+            </script>";
+        
+    }
 ?>

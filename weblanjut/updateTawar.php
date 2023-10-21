@@ -37,7 +37,7 @@ require "head.html";
 //--------- konfigurasi
 
 //jumlah data per halaman
-$jmlDataPerHal = 3;
+$jmlDataPerHal = 10;
 
 //cari jumlah data
 if (isset($_POST['cari'])){
@@ -160,8 +160,8 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
                 <td><?php echo $row["jamkul"]?></td>
                 <td><?php echo $row["ruang"]?></td>
 				<td>
-				<a class="btn btn-outline-primary btn-sm" href="editkultawar.php?kode=<?php echo $row['idkultawar']?>">Edit</a>
-				<a class="btn btn-outline-danger btn-sm" href="hpskultawar.php?kode=<?php echo $row["idkultawar"]?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
+				<a class="btn btn-outline-primary btn-sm" href="editkultawar.php?kode=<?php echo encryptid($row['idkultawar'])?>">Edit</a>
+				<a class="btn btn-outline-danger btn-sm" href="hpsKultawar.php?kode=<?php echo encryptid($row["idkultawar"])?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
 				</td>
 			</tr>
 			<?php 

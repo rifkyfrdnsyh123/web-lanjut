@@ -150,8 +150,10 @@
 							<td><?php echo $row["homebase"]?></td>
 							
 							<td>
-								<a class="btn btn-outline-primary btn-sm" href="editDsn.php?kode=<?php echo $row['npp']?>">Edit</a>
-								<a class="btn btn-outline-danger btn-sm" href="hpsDsn.php?kode=<?php echo $row["npp"]?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
+								<a class="btn btn-outline-primary btn-sm" href="editDsn.php?npp=<?php 
+								echo encryptid($row['npp'])?>">Edit</a>
+								<a class="btn btn-outline-danger btn-sm" href="hpsDsn.php?npp=<?php 
+								echo encryptid($row["npp"])?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
 							</td>
 						</tr>
 								<?php 

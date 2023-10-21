@@ -37,7 +37,7 @@ require "head.html";
 //--------- konfigurasi
 
 //jumlah data per halaman
-$jmlDataPerHal = 3;
+$jmlDataPerHal = 10;
 
 //cari jumlah data
 if (isset($_POST['cari'])){
